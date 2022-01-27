@@ -108,12 +108,12 @@ addBtn.addEventListener('click', function (e) {
         });
 
         //delete all planed and done work
-        resetBtn.addEventListener('click', function (e) {
-            e.preventDefault();
-            // document.getElementById('toDoList').remove();
-            // document.getElementById('doneList').remove();
+        // resetBtn.addEventListener('click', function (e) {
+        //     e.preventDefault();
+        //     // document.getElementById('toDoList').remove();
+        //     // document.getElementById('doneList').remove();
 
-        });
+        // });
 
     }
     else {
