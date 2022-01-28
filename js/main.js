@@ -6,13 +6,21 @@ errorDiv.className = 'error';
 errorDiv.id = 'error-message';
 errorDiv.style.display = 'block';
 
+//create to Do List
+let toDoList = document.createElement('ul');
+toDoList.id = 'toDoList';
+
+//create done List
+let doneList = document.createElement('ul');
+doneList.id = 'doneList';
+
+let count = toDoList.childElementCount;
+
 addBtn.addEventListener('click', function (e) {
     // preventDefault prevents the link from reloading the page
     e.preventDefault();
 
-    //create list
-    let ul = document.createElement('ul');
-    ul.id = 'toDoList';
+
     let li = document.createElement('li');
 
     // create input
@@ -23,7 +31,7 @@ addBtn.addEventListener('click', function (e) {
     inputToDo.className = 'form-control';
     let value = inputToDo.value.trim();
 
-    if (input.value !== "") {
+    if (input.value !== "" ) {
 
         inputToDo.value = input.value;
         removeErrorMessages();
@@ -42,9 +50,9 @@ addBtn.addEventListener('click', function (e) {
         deleteBtn.className = 'btn btn-outline-secondary';
 
         //append children
-        ul.append(li);
+        toDoList.append(li);
         li.append(inputToDo, changeBtn, doneBtn, deleteBtn);
-        document.getElementById('toDoSection').append(ul);
+        document.getElementById('toDoSection').append(toDoList);
 
         //change to do list text
         changeBtn.addEventListener('click', function (e) {
@@ -66,7 +74,7 @@ addBtn.addEventListener('click', function (e) {
                 }
             }
             else {
-                
+
                 errorDiv.innerHTML = 'Tomma sysslor kan ej sparas';
                 document.getElementById('toDoSection').append(errorDiv);
 
@@ -79,46 +87,51 @@ addBtn.addEventListener('click', function (e) {
 
             if (inputToDo.value !== "") {
                 removeErrorMessages();
-                //create list
-                let ul = document.createElement('ul');
-                ul.id = 'doneList';
+
                 let li = document.createElement('li');
                 e.target.parentNode.remove();
 
                 //append children
-                ul.append(li);
+                doneList.append(li);
                 li.append(inputToDo, changeBtn, deleteBtn);
-                document.getElementById('doneSection').append(ul);
-               
+                document.getElementById('doneSection').append(doneList);
+
+
             }
-        
-            
-            else{
+
+
+            else {
                 errorDiv.innerHTML = 'Tomma sysslor kan ej flyttas';
                 document.getElementById('toDoSection').append(errorDiv);
             }
-            // 
+
         });
 
-        //delete the planed work
+        //delete the planed list
         deleteBtn.addEventListener('click', function (e) {
             e.preventDefault();
             e.target.parentNode.remove();
 
         });
 
-        //delete all planed and done work
-        // resetBtn.addEventListener('click', function (e) {
-        //     e.preventDefault();
-        //     // document.getElementById('toDoList').remove();
-        //     // document.getElementById('doneList').remove();
+        //delete all planed and done list
+        resetBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            var lists = document.getElementsByTagName('ul');
+            console.log(lists);
+            for (let list of lists) {
+                list.remove();
+            }
 
-        // });
+
+        });
+
+
 
     }
     else {
 
-       
+
         errorDiv.innerHTML = 'For ej skapa tomma sysslor';
         document.getElementById('form').append(errorDiv);
 
@@ -137,6 +150,10 @@ addBtn.addEventListener('click', function (e) {
     }
 
 
+    isStringEmpty = function (field) {
+        // trim() removes all spaces beofe and after the string
+        return field.value.trim() === ''
+    }
 
 
 
