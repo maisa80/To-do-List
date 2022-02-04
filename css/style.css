@@ -1,32 +1,71 @@
+       body {
+           margin: 20px auto;
+           font-family: Verdana, Geneva, Tahoma, sans-serif;
+       }
 
-.content {
-    margin: 20px auto;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
 
-}
+       main {
 
-.toDo-div {
-    display: flex;
-    flex-flow: row wrap;
-    border: 1px solid #333;
-    padding: 5px;
-}
+           background-color: rgb(245, 244, 244);
+           padding: 20px;
+       }
 
-.form-control {
-    width: 50%;
-    display: inline-block;
-}
-.btn-outline-secondary {
-    color: #6c757d;
-    border-color: #6c757d;
-    margin: 0px 3px;
-}
+       h1 {
+           font-size: 30px;
+       }
 
-li{
-    color: purple;
-    list-style: circle;
-}
-.error{
-    color: red;
-    display: none;
-}
+       h2 {
+           font-size: 20px;
+       }
+
+       h2, section {
+           margin: 20px 0px;
+       }
+
+
+       footer, h1 {
+
+           color: white;
+       }
+
+       footer p {
+           text-align: center;
+           font-size: 12px;
+       }
+
+       #content {
+           margin: 20px auto;
+       }
+
+       .form-control {
+           width: 50%;
+           display: inline-block;
+       }
+
+       .btn {
+           vertical-align: baseline;
+           margin: 2px 5px;
+       }
+
+       ul {
+           list-style: none;
+       }
+
+       ul li {
+           padding: 5px
+       }
+
+       #incomplete-tasks-section li:before {
+           content: ' \276D';
+           padding: 5px;
+       }
+
+       #complete-tasks-section li:before {
+           content: ' \2713';
+           padding: 5px;
+       }
+
+       .error {
+           color: red;
+           display: none;
+       }
