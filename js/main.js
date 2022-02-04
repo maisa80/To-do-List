@@ -2,6 +2,7 @@ let inputNewTask = document.getElementById('newTask');
 let addBtn = document.getElementById('addBtn');
 let resetBtn = document.getElementById('resetBtn');
 
+//create error div
 let errorDiv = document.createElement('div');
 errorDiv.className = 'error';
 errorDiv.id = 'error-message';
@@ -17,18 +18,19 @@ let doneList = document.createElement('ul');
 doneList.id = 'doneList';
 doneList.className = 'list-group-item list-group-item-success';
 
-//create task object from class Task
+//create task object from Task class
 let task = new Task('task');
 
 //adds the new task to the toDoList
 addBtn.addEventListener('click', function (e) {
-    // preventDefault prevents the link from reloading the page
+
+    //preventDefault prevents the link from reloading the page
     e.preventDefault();
 
-    // create li element
+    //create li element
     let li = document.createElement('li');
 
-    // create input
+    //create input
     let inputAddedTask = document.createElement('input');
     inputAddedTask.type = 'text';
     inputAddedTask.disabled = true;
@@ -38,21 +40,22 @@ addBtn.addEventListener('click', function (e) {
     if (inputNewTask.value.trim() !== "") {
         errorDiv.innerHTML = "";
 
-        // The trim() method removes whitespace from both sides of a string.
+        //The trim() method removes whitespace from both sides of a string.
         inputAddedTask.value = inputNewTask.value.trim();
 
-        // Reset the value of the form input
+        //reset the value of the form input
         inputNewTask.value = "";
 
-        // create buttons
+        //create buttons
         let updateBtn = document.createElement('button');
-        let doneBtn = document.createElement('button');
-        let deleteBtn = document.createElement('button');
-
         updateBtn.innerHTML = 'Ändra';
         updateBtn.className = 'btn btn-secondary';
+
+        let doneBtn = document.createElement('button');
         doneBtn.innerHTML = 'Färdig';
         doneBtn.className = 'btn btn-success';
+
+        let deleteBtn = document.createElement('button');
         deleteBtn.innerHTML = 'Radera';
         deleteBtn.className = 'btn btn-danger';
 
@@ -61,16 +64,16 @@ addBtn.addEventListener('click', function (e) {
         li.append(inputAddedTask, updateBtn, doneBtn, deleteBtn);
         document.getElementById('incomplete-tasks-section').append(toDoList);
 
-        //call method which updates to do input value
+        //call method to update to do input value
         updateBtn.addEventListener('click', task.updateAddedTaskValue);
 
-        //call method which moves completed task to done list
+        //call method to move completed task to done list
         doneBtn.addEventListener('click', task.moveDoneTaskToDoneList);
 
-        //call method which deletes a task
+        //call method to delete a task
         deleteBtn.addEventListener('click', task.deleteTask);
 
-        //call method which deletes all tasks from both lists
+        //call method to delete all tasks from both lists
         resetBtn.addEventListener('click', task.resetTasks);
 
     } else {
@@ -79,7 +82,7 @@ addBtn.addEventListener('click', function (e) {
         document.getElementById('form').append(errorDiv);
 
     }
-
+    //count the tasks
     task.countIncompletedTasks();
     task.countcompletedTasks();
     

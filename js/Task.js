@@ -5,7 +5,7 @@ class Task {
     }
 
     //updates the task input value
-    // user can not save an empty value or just whitespaces > error message 
+    //user can not save an empty value or just whitespaces > error message 
     updateAddedTaskValue = function (e) {
         e.preventDefault();
         errorDiv.innerHTML = "";
@@ -34,9 +34,8 @@ class Task {
 
     }
 
-    //moves the done task to doneList when click on done button (färdig knap)
-    //user can not move an empty task to doneList
-    //user can not move the task if the task is not saved.
+    //moves the done task to doneList when user click on done button (färdig knap)
+    //user can not move an empty or unsaved task to doneList
     moveDoneTaskToDoneList = function (e) {
       
         e.preventDefault();
