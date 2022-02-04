@@ -82,16 +82,23 @@ class Task {
     resetTasks = function () {
 
         let lists = document.querySelectorAll('li');
-       
+       //delete all tasks (li elements)
         for (let list of lists) {
 
             list.remove(); 
 
         }
-       
-        document.getElementById("count-incompleted-tasks").innerHTML = '';
-        document.getElementById("count-completed-tasks").innerHTML = '';
-
+        //if lists has no children (tasks) remove toDoList and doneList
+       if(toDoList.childNodes.length == 0){
+           toDoList.remove();
+           document.getElementById("count-incompleted-tasks").innerHTML = '';
+        
+        }
+       if(doneList.childNodes.length == 0){
+           doneList.remove();
+           document.getElementById("count-completed-tasks").innerHTML = '';
+        }
+        
 
     }
 

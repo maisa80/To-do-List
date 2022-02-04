@@ -8,6 +8,7 @@
 
            background-color: rgb(245, 244, 244);
            padding: 20px;
+           min-height: 100vh;
        }
 
        h1 {
